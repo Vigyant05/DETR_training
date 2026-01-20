@@ -2,25 +2,11 @@
 
 A complete pipeline for fine-tuning Facebook's DETR (DEtection TRansformer) model for document layout analysis. This project includes dataset preparation, model training, evaluation, and inference tools with support for multilingual documents.
 
-## 📋 Table of Contents
-
-- [Overview](#overview)
-- [Features](#features)
-- [Project Structure](#project-structure)
-- [Installation](#installation)
-- [Dataset Preparation](#dataset-preparation)
-- [Training](#training)
-- [Evaluation](#evaluation)
-- [Inference](#inference)
-- [Classes](#classes)
-- [Configuration](#configuration)
-- [License](#license)
-
-## 🔍 Overview
+## Overview
 
 This repository provides tools to fine-tune a DETR model for detecting document layout elements such as text blocks, titles, lists, tables, and figures. The pipeline is designed for processing multilingual documents with support for English, Arabic, Hindi, Nepali, and Persian.
 
-## ✨ Features
+## Features
 
 - **COCO Format Conversion**: Convert custom annotations to COCO format with automatic train/val/test splits
 - **DETR Fine-Tuning**: Fine-tune `facebook/detr-resnet-50` for custom object detection tasks
@@ -29,7 +15,7 @@ This repository provides tools to fine-tune a DETR model for detecting document 
 - **Image Preprocessing**: Automatic deskewing and orientation correction using OCR-based scoring
 - **Multilingual Support**: OCR-based preprocessing for documents in multiple languages
 
-## 🛠️ Installation
+## Installation
 
 ### Prerequisites
 
@@ -60,7 +46,7 @@ brew install tesseract
 brew install tesseract-lang
 ```
 
-## 📊 Dataset Preparation
+## Dataset Preparation
 
 ### Input Format
 
@@ -105,7 +91,7 @@ coco_dataset/
     └── annotations.json
 ```
 
-## 🚀 Training
+## Training
 
 ### Configure Training
 
@@ -135,7 +121,7 @@ python model_split_train.py
 
 The fine-tuned model will be saved to `./layout_detection_finetuned/`.
 
-## 📈 Evaluation
+## Evaluation
 
 Evaluate your trained model using Mean Average Precision (mAP):
 
@@ -157,7 +143,7 @@ evaluate_map(
 - mAP@75 (mAP at IoU=0.75)
 - mAP per class
 
-## 🔮 Inference
+## Inference
 
 ### Basic Inference
 
@@ -194,7 +180,7 @@ Use `training.ipynb` for inference with automatic:
 - **Orientation Detection**: Finds the best orientation (0°, 90°, 180°, 270°)
 - **Flip Detection**: Detects horizontal/vertical flips
 
-## 🏷️ Classes
+## Classes
 
 The model is trained to detect 5 document layout classes:
 
@@ -226,7 +212,7 @@ To train with different classes:
 2. Update `id2label` mapping in inference scripts
 3. Ensure your annotations use the correct `category_id` values
 
-## 📝 Usage Examples
+## Usage Examples
 
 ### Quick Start
 
@@ -256,15 +242,15 @@ for score, label, box in zip(results["scores"], results["labels"], results["boxe
     print(f"Detected {model.config.id2label[label.item()]} with confidence {score:.2f}")
 ```
 
-## 🤝 Contributing
+## Contributing
 
 Contributions are welcome! Please feel free to submit a Pull Request.
 
-## 📄 License
+## License
 
 This project is licensed under the MIT License.
 
-## 🙏 Acknowledgments
+## Acknowledgments
 
 - [Facebook DETR](https://github.com/facebookresearch/detr) - DEtection TRansformer
 - [Hugging Face Transformers](https://huggingface.co/docs/transformers) - Model implementations
